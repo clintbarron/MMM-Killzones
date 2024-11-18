@@ -78,7 +78,7 @@ Module.register("MMM-Killzones", {
       const timeRemaining = moment.duration(
         this.nextEventTime.diff(moment().tz(this.config.timeZone))
       );
-      countdown.innerHTML = `Time remaining: ${timeRemaining.hours()}h ${timeRemaining.minutes()}m ${timeRemaining.seconds()}s`;
+      countdown.innerHTML = `Remaining: ${timeRemaining.hours()}h ${timeRemaining.minutes()}m`;
     }
     wrapper.appendChild(countdown);
 
