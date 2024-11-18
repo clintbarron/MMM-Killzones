@@ -1,32 +1,21 @@
-/* Default styling */
 .killzone-wrapper {
-    text-align: center;
-    font-family: "Arial", sans-serif;
+    transition: opacity 1s ease-in-out;
 }
 
-.killzone-text {
-    font-size: 2.5em;
-    font-weight: bold;
-    color: #ffffff;
+.killzone-message {
+    font-size: 2em;
+    text-align: center;
+    animation: fadeIn 1s;
 }
 
 .killzone-countdown {
-    font-size: 1.5em;
-    color: #aaaaaa;
+    font-size: 1.2em;
     margin-top: 10px;
+    text-align: center;
+    animation: fadeIn 1s;
 }
 
-/* Adjust styles for bottom-right placement */
-.region.bottom.right .killzone-wrapper {
-    font-size: 1.5em; /* Smaller text for bottom-right */
-}
-
-/* Adjust styles for bottom-center placement */
-.region.bottom.center .killzone-wrapper {
-    font-size: 2em; /* Slightly smaller text for bottom-center */
-}
-
-/* Adjust styles for top-left placement */
-.region.top.left .killzone-wrapper {
-    font-size: 1.8em; /* Custom size for top-left */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
