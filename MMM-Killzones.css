@@ -1,5 +1,16 @@
+.killzone-wrapper {
+    text-align: center;
+    font-family: "Arial", sans-serif;
+}
+
 .killzone-text {
-    font-size: 2.5em; /* Large font size */
-    text-align: center; /* Center text */
-    color: white; /* Clean white text */
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.killzone-countdown {
+    font-size: 1.5em;
+    color: #aaaaaa;
+    margin-top: 10px;
 }
