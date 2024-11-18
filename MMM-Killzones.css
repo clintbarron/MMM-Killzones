@@ -1,3 +1,4 @@
+/* Default styling */
 .killzone-wrapper {
     text-align: center;
     font-family: "Arial", sans-serif;
@@ -13,4 +14,19 @@
     font-size: 1.5em;
     color: #aaaaaa;
     margin-top: 10px;
+}
+
+/* Adjust styles for bottom-right placement */
+.region.bottom.right .killzone-wrapper {
+    font-size: 1.5em; /* Smaller text for bottom-right */
+}
+
+/* Adjust styles for bottom-center placement */
+.region.bottom.center .killzone-wrapper {
+    font-size: 2em; /* Slightly smaller text for bottom-center */
+}
+
+/* Adjust styles for top-left placement */
+.region.top.left .killzone-wrapper {
+    font-size: 1.8em; /* Custom size for top-left */
 }
