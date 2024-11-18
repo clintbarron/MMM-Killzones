@@ -22,10 +22,10 @@ Module.register("MMM-Killzones", {
   updateKillzone: function () {
     const now = moment().tz(this.config.timeZone);
     const times = [
-      { message: "In Killzone", start: "20:00", end: "00:00" }, // Asia Killzone
-      { message: "In Killzone", start: "02:00", end: "05:00" }, // London Open Killzone
-      { message: "In Killzone", start: "07:00", end: "10:00" }, // New York Killzone
-      { message: "In Killzone", start: "10:00", end: "12:00" }, // London Close Killzone
+      { message: "In Asia Killzone", start: "20:00", end: "00:00" }, // Asia Killzone
+      { message: "In London Open Killzone", start: "02:00", end: "05:00" }, // London Open Killzone
+      { message: "In New York Killzone", start: "07:00", end: "10:00" }, // New York Killzone
+      { message: "In London Close Killzone", start: "10:00", end: "12:00" }, // London Close Killzone
     ];
 
     let currentMessage = "Not in a killzone";
@@ -78,7 +78,7 @@ Module.register("MMM-Killzones", {
       const timeRemaining = moment.duration(
         this.nextEventTime.diff(moment().tz(this.config.timeZone))
       );
-      countdown.innerHTML = `Remaining: ${timeRemaining.hours()}h ${timeRemaining.minutes()}m`;
+      countdown.innerHTML = `Time remaining: ${timeRemaining.hours()}h ${timeRemaining.minutes()}m`;
     }
     wrapper.appendChild(countdown);
 
