@@ -30,7 +30,6 @@ Module.register("MMM-Killzones", {
 
     let currentMessage = "Not in a killzone";
     let nextEventTime;
-    let nowTime = now.format("HH:mm");
 
     for (let i = 0; i < times.length; i++) {
       const eventStart = moment.tz(
@@ -40,7 +39,11 @@ Module.register("MMM-Killzones", {
       );
       const eventEnd = moment.tz(times[i].end, "HH:mm", this.config.timeZone);
 
-      if (now.isBetween(eventStart, eventEnd)) {
+      if (
+        now.isBetween(eventStart, eventEnd) ||
+        now.isSame(eventStart) ||
+        now.isSame(eventEnd)
+      ) {
         currentMessage = times[i].message;
         nextEventTime = eventEnd;
         break;
@@ -72,7 +75,7 @@ Module.register("MMM-Killzones", {
       const timeRemaining = moment.duration(
         this.nextEventTime.diff(moment().tz(this.config.timeZone))
       );
-      countdown.innerHTML = `Time remaining: ${timeRemaining.hours()}h ${timeRemaining.minutes()}m`;
+      countdown.innerHTML = `Time remaining: ${timeRemaining.hours()}h ${timeRemaining.minutes()}m ${timeRemaining.seconds()}s`;
     }
     wrapper.appendChild(countdown);
 
