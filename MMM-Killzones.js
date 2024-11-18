@@ -22,10 +22,10 @@ Module.register("MMM-Killzones", {
   updateKillzone: function () {
     const now = moment().tz(this.config.timeZone);
     const times = [
-      { message: "In Asia Killzone", start: "20:00", end: "00:00" },
-      { message: "In London Open Killzone", start: "02:00", end: "05:00" },
-      { message: "In New York Killzone", start: "07:00", end: "10:00" },
-      { message: "In London Close Killzone", start: "10:00", end: "12:00" },
+      { message: "In Killzone", start: "20:00", end: "00:00" }, // Asia Killzone
+      { message: "In Killzone", start: "02:00", end: "05:00" }, // London Open Killzone
+      { message: "In Killzone", start: "07:00", end: "10:00" }, // New York Killzone
+      { message: "In Killzone", start: "10:00", end: "12:00" }, // London Close Killzone
     ];
 
     let currentMessage = "Not in a killzone";
@@ -37,13 +37,11 @@ Module.register("MMM-Killzones", {
         "HH:mm",
         this.config.timeZone
       );
-      const eventEnd = moment.tz(times[i].end, "HH:mm", this.config.timeZone);
+      const eventEnd = moment
+        .tz(times[i].end, "HH:mm", this.config.timeZone)
+        .add(i === 0 ? 1 : 0, "day");
 
-      if (
-        now.isBetween(eventStart, eventEnd) ||
-        now.isSame(eventStart) ||
-        now.isSame(eventEnd)
-      ) {
+      if (now.isBetween(eventStart, eventEnd, null, "[]")) {
         currentMessage = times[i].message;
         nextEventTime = eventEnd;
         break;
