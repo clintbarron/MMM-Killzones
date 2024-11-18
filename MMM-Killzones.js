@@ -37,17 +37,22 @@ Module.register("MMM-Killzones", {
         "HH:mm",
         this.config.timeZone
       );
-      const eventEnd = moment
-        .tz(times[i].end, "HH:mm", this.config.timeZone)
-        .add(i === 0 ? 1 : 0, "day");
+      const eventEnd = moment.tz(times[i].end, "HH:mm", this.config.timeZone);
+
+      // Handle cases where the end time is past midnight
+      if (eventEnd.isBefore(eventStart)) {
+        eventEnd.add(1, "day");
+      }
 
       if (now.isBetween(eventStart, eventEnd, null, "[]")) {
         currentMessage = times[i].message;
         nextEventTime = eventEnd;
         break;
-      } else if (now.isBefore(eventStart)) {
+      } else if (
+        now.isBefore(eventStart) &&
+        (!nextEventTime || eventStart.isBefore(nextEventTime))
+      ) {
         nextEventTime = eventStart;
-        break;
       }
     }
 
